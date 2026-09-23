@@ -1,0 +1,61 @@
+---
+interface Props {
+  uid: string;
+  accept: string;
+  multiple?: boolean;
+  formats?: string[];
+  maxSizeMB?: number;
+  actionLabel: string;
+  acceptLabel: string;
+  tip?: string;
+}
+const { uid, accept, multiple = false, formats = [], maxSizeMB, actionLabel, acceptLabel, tip } = Astro.props;
+---
+<div class="not-prose mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+  <div class="p-6">
+    <div
+      id={`${uid}-dropzone`}
+      data-dropzone
+      class="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center transition-colors hover:border-brand-300 hover:bg-brand-50"
+      role="button"
+      tabindex="0"
+      aria-label={acceptLabel}
+    >
+      <span class="text-4xl" aria-hidden="true">📤</span>
+      <p class="text-sm font-semibold text-slate-700">Drag &amp; drop here or <span class="text-brand-600 underline">browse</span></p>
+      <p class="text-xs text-slate-500">{acceptLabel}</p>
+      {formats.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-2">
+          {formats.map((f) => (<span class="rounded-md bg-slate-200 px-2 py-0.5 text-xs font-medium text-slate-600">{f}</span>))}
+        </div>
+      )}
+      {maxSizeMB && <p class="text-xs text-slate-400">Max file size: {maxSizeMB} MB</p>}
+      <input id={`${uid}-input`} type="file" accept={accept} multiple={multiple} class="sr-only" />
+    </div>
+
+    <div id={`${uid}-files`} class="mt-4 space-y-2" aria-live="polite"></div>
+
+    <div class="mt-4 flex items-center gap-3">
+      <button
+        id={`${uid}-process`}
+        type="button"
+        disabled
+        class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        <span id={`${uid}-spinner`} class="spinner hidden" aria-hidden="true"></span>
+        {actionLabel}
+      </button>
+      <span id={`${uid}-status`} class="text-sm text-slate-500" role="status"></span>
+    </div>
+
+    <div id={`${uid}-progresswrap`} class="mt-3 hidden" aria-hidden="true">
+      <div class="h-2 w-full overflow-hidden rounded-full bg-slate-200">
+        <div id={`${uid}-bar`} class="h-full w-0 rounded-full bg-brand-600 transition-[width] duration-200"></div>
+      </div>
+      <span id={`${uid}-progressText`} class="mt-1 block text-xs text-slate-500"></span>
+    </div>
+
+    <div id={`${uid}-result`} class="mt-4"></div>
+    {tip && <p class="mt-4 text-xs text-slate-400">{tip}</p>}
+  </div>
+</div>

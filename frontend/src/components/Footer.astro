@@ -1,0 +1,63 @@
+---
+import { siteName } from '../config/site.config.json';
+
+const toolCategories = [
+  { title: 'Document tools', links: [
+    { href: '/tools/merge-pdf/', label: 'Merge PDF' },
+    { href: '/tools/compress-pdf/', label: 'Compress PDF' },
+    { href: '/tools/pdf-to-text/', label: 'PDF to Text' },
+    { href: '/tools/pdf-to-jpg/', label: 'PDF to JPG' },
+    { href: '/tools/docx-to-html/', label: 'DOCX to HTML' },
+    { href: '/tools/excel-to-csv/', label: 'Excel to CSV' },
+  ]},
+  { title: 'Image tools', links: [
+    { href: '/tools/compress-image/', label: 'Compress Image' },
+    { href: '/tools/image-converter/', label: 'Image Converter' },
+    { href: '/tools/image-resizer/', label: 'Image Resizer' },
+  ]},
+  { title: 'Audio & video tools', links: [
+    { href: '/tools/mp4-to-mp3/', label: 'MP4 to MP3' },
+    { href: '/tools/audio-converter/', label: 'Audio Converter' },
+  ]},
+  { title: 'More', links: [
+    { href: '/tools/qr-code-generator/', label: 'QR Code Generator' },
+  ]},
+];
+const year = new Date().getFullYear();
+---
+<footer class="mt-16 border-t border-slate-200 bg-slate-50">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="/" class="flex items-center gap-2">
+        <img src="/favicon.svg" alt="" width="28" height="28" class="h-7 w-7" loading="lazy" />
+        <span class="text-lg font-bold tracking-tight text-brand-800">{siteName}</span>
+      </a>
+      <p class="mt-3 text-sm text-slate-600">
+        Free online tools that run entirely in your browser. Your files never leave your device.
+      </p>
+    </div>
+
+    {toolCategories.slice(0, 3).map((cat) => (
+      <nav aria-label={cat.title}>
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">{cat.title}</h2>
+        <ul class="mt-3 space-y-2">
+          {cat.links.slice(0, 4).map((link) => (
+            <li><a href={link.href} class="text-sm text-slate-600 hover:text-brand-600">{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    ))}
+  </div>
+
+  <div class="border-t border-slate-200">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 sm:flex-row">
+      <p class="text-sm text-slate-500">© {year} {siteName}. All rights reserved.</p>
+      <nav class="flex flex-wrap items-center justify-center gap-4 text-sm" aria-label="Legal">
+        <a href="/about/" class="text-slate-500 hover:text-brand-600">About</a>
+        <a href="/contact/" class="text-slate-500 hover:text-brand-600">Contact</a>
+        <a href="/privacy-policy/" class="text-slate-500 hover:text-brand-600">Privacy Policy</a>
+        <a href="/terms-of-service/" class="text-slate-500 hover:text-brand-600">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>

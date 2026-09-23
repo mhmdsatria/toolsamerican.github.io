@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Does PDF to Text work with scanned documents?', a: 'Scanned pages are images, so direct extraction returns empty text. Use an OCR service first, or rely on PDF to JPG to export the pages as images and run OCR locally on them.' },
+  { q: 'Is my file uploaded anywhere?', a: 'No. The text is extracted entirely in your browser. Your PDF never leaves your device, keeping sensitive documents safe from servers and man-in-the-middle risks.' },
+  { q: 'What if my PDF is copy-protected?', a: 'If a PDF has security restrictions on extraction, we inform you that the file is protected. Files that allow printing or viewing usually allow local extraction as well.' },
+  { q: 'Which languages are supported?', a: 'Text extraction works for embedded text in any language, including scripts like Arabic, Cyrillic, and CJK, provided the PDF fonts are embedded correctly.' },
+  { q: 'Can I extract text from multiple PDFs at once?', a: 'This tool processes one file at a time for reliability. To batch-process, simply run the tool again for each document.' },
+];
+const howToSteps = [
+  'Upload the PDF you want to extract text from,',
+  'The tool reads every page and pulls out the embedded text in seconds,',
+  'Click "Download" to save the result as a plain text file.',
+];
+const description = 'Extract text from PDF files accurately and privately — free, with no uploads. This tool reads the embedded text layer of your PDF page by page and exports it as a clean, plain-text file that you can copy into documents, emails, or your preferred editor. It is perfect for reusing content from manuals, legal paperwork, research papers, and old reports without retyping. The extraction happens completely inside your browser, so confidential or unpublished material never travels to an external server. Unlike pirate-ware or unstable online scrapers, the result preserves line order and keeps paragraph breaks in a readable format. Keep in mind that truly scanned pages are images, not text, so they need OCR before extraction; for those, our companion PDF to JPG tool lets you export each page as an image for your local OCR workflow. After you have your text, reuse it anywhere — merge it with Merge PDF, trim a heavy document first with Compress PDF, or feed the copy directly into your notes. No account, no watermark, no catch: just fast, private text extraction that respects your data. PDF to Text is the straightforward way to unlock the words locked inside your PDFs.';
+---
+<ToolLayout slug="pdf-to-text" icon="📝" title="PDF to Text"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/pdf-to-text/">
+  <ToolUploader slot="uploader" uid="pdftotext" accept="application/pdf,.pdf"
+    formats={['PDF']} actionLabel="Extract Text" acceptLabel="Choose a PDF file to extract text from" />
+</ToolLayout>
+
+<script>
+  import setupPdfToText from '../../lib/client/pdf-to-text.js';
+  setupPdfToText();
+</script>

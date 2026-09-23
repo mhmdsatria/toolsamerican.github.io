@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Will compression make my photo blurry?', a: 'No. The compressor balances file size with quality automatically, and preserves resolution. You can tune the quality slider for a lighter file if needed.' },
+  { q: 'Is my image uploaded to a server?', a: 'No. Compression happens locally in your browser. Your photos never leave your device, so private or copyrighted images stay safe.' },
+  { q: 'Which formats are supported?', a: 'JPG, PNG, and WebP are supported. PNGs with transparency are kept lossless-friendly where possible, while JPGs and WebP get the biggest wins.' },
+  { q: 'How small can my file get?', a: 'Typical savings range from 40% to 80% depending on the source. A 3 MB photo often drops below 1 MB with no visible quality change.' },
+  { q: 'Can I batch compress multiple images?', a: 'Yes. Select several images at once and each one is compressed and offered for download individually.' },
+];
+const howToSteps = [
+  'Upload one or more JPG, PNG, or WebP images,',
+  'The compressor tunes quality and encoding in your browser for the best balance,',
+  'Download each compressed image — or grab them all from the results list.',
+];
+const description = 'Compress images online for free — right in your browser, with zero uploads. This tool shrinks JPG, PNG, and WebP photos and graphics by re-encoding them with smart quality selection, dramatically reducing file size while keeping images looking sharp. It is perfect for speeding up websites, squeaking photos past email limits, and freeing up space on your phone or drive. The compressor runs locally on your device using your browser’s own image engine, so nothing is ever transmitted — your vacation photos, product shots, and private designs stay completely private. You can upload multiple files at once and each image is tuned independently to balance visual fidelity against weight, with typical savings of 40 to 80 percent. Whether you are an e-commerce seller optimizing product images for a faster storefront, a blogger preparing visuals for posts, or just clearing space in a chat group, fewer megabytes make everything move quicker. When you need other formatting, combine this tool with Image Converter for format changes, or Image Resizer for exact dimensions. Compress Image is free, fast, and built for privacy — the no-frills way to lighten your pictures.';
+---
+<ToolLayout slug="compress-image" icon="🫙" title="Compress Image"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/compress-image/">
+  <ToolUploader slot="uploader" uid="imgcompress" accept="image/jpeg,image/png,image/webp,image/avif" multiple={true}
+    formats={['JPG', 'PNG', 'WebP']} actionLabel="Compress Image" acceptLabel="Add one or more images to compress" />
+</ToolLayout>
+
+<script>
+  import setupCompressImage from '../../lib/client/image-compress.js';
+  setupCompressImage();
+</script>

@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Is converting Excel to CSV free?', a: 'Yes, completely free. No account, no watermark, no file count limits, and every worksheet is converted automatically.' },
+  { q: 'Are my spreadsheets uploaded?', a: 'No. The workbook is parsed locally in your browser and converted to CSV without any network request. Your data stays on your device.' },
+  { q: 'Which Excel formats are supported?', a: 'Both legacy XLS and modern XLSX workbooks are supported, along with basic ODS files. Formulas are evaluated to their computed values.' },
+  { q: 'What happens to multiple worksheets?', a: 'Each sheet is exported as its own CSV file, so no data is lost and every sheet appears in the download group.' },
+  { q: 'Can I keep formulas instead of values?', a: 'CSV stores data, not formulas. The converter outputs the current computed values of your cells, which is what most workflows expect.' },
+];
+const howToSteps = [
+  'Upload your Excel (.xls or .xlsx) workbook,',
+  'Every worksheet is converted into its own CSV file in the order they appear,',
+  'Download the CSV files individually or use them straight from the results.',
+];
+const description = 'Convert Excel spreadsheets to CSV files for free — instantly and securely. This tool reads XLS and XLSX workbooks directly in your browser, evaluates formulas to their current values, and exports every worksheet as a tidy CSV that plays perfectly with databases, analytics tools, email clients, and code. Because the conversion runs locally on your device, sensitive numbers, ledgers, and client data never pass through a remote server. The tool handles large workbooks gracefully and preserves all sheets by name, so nothing is silently trimmed. CSV is the universal format for moving tabular data between applications — from spreadsheets into MySQL, BigQuery, marketing platforms, or machine learning pipelines — and this converter makes that handoff effortless. No installs, no sign-up, and no file-size gates: just upload, convert, and download in a matter of seconds. If your workflow needs the spreadsheet preserved as a portable document instead, pair this with our Merge PDF or Compress PDF tools to archive results elsewhere. Excel to CSV is built for speed, privacy, and reliability — the simple way to unlock your spreadsheet data.';
+---
+<ToolLayout slug="excel-to-csv" icon="📊" title="Excel to CSV"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/excel-to-csv/">
+  <ToolUploader slot="uploader" uid="excel2csv" accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    formats={['XLS', 'XLSX']} actionLabel="Convert to CSV" acceptLabel="Choose an Excel workbook (.xls or .xlsx)" />
+</ToolLayout>
+
+<script>
+  import setupExcelToCsv from '../../lib/client/excel-to-csv.js';
+  setupExcelToCsv();
+</script>

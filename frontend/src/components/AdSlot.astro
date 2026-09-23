@@ -1,0 +1,29 @@
+---
+import { googleAdsensePublisherId } from '../config/site.config.json';
+
+interface Props {
+  label?: string;
+  slot?: string;
+}
+const { label = 'Advertisement', slot = 'toolsamerican_auto' } = Astro.props;
+const hasPublisher = Boolean(googleAdsensePublisherId);
+---
+{hasPublisher ? (
+  <div class="mx-auto my-10 w-full max-w-6xl px-4" aria-label={label}>
+    <p class="mb-1 text-center text-[11px] uppercase tracking-wide text-slate-400">Advertisement</p>
+    <ins
+      class="adsbygoogle block w-full min-h-[90px]"
+      data-ad-client={googleAdsensePublisherId}
+      data-ad-slot={slot}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>{(window.adsbygoogle = window.adsbygoogle || []).push({});}</script>
+  </div>
+) : (
+  <div class="mx-auto my-10 w-full max-w-6xl px-4" aria-hidden="true">
+    <div class="flex min-h-[90px] w-full items-center justify-center rounded-lg border border-dashed border-slate-200 bg-slate-50">
+      <span class="text-xs uppercase tracking-wide text-slate-400">Advertisement</span>
+    </div>
+  </div>
+)}

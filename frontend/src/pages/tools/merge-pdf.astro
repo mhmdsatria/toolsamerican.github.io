@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Is merging PDFs free?', a: 'Yes. This tool is completely free with no watermarks, no sign-up, and no limits on how many PDFs you can combine.' },
+  { q: 'Are my files uploaded to a server?', a: 'No. The merge happens entirely in your browser using WebAssembly. Your documents never leave your device, which makes this tool safe for confidential files.' },
+  { q: 'Can I reorder pages before merging?', a: 'Files are combined in the order you select them. Use the rename/order option or drag-drop sequentially to maintain your preferred page order.' },
+  { q: 'What PDF errors can occur?', a: 'Password-protected PDFs must be decrypted before merging. Our tool skips files it cannot read and reports an error, so the rest of your merge is unaffected.' },
+  { q: 'Will quality drop after merging?', a: 'No. Every page is copied into a new PDF document without recompression, preserving text, vector graphics, and image quality.' },
+];
+const howToSteps = [
+  'Click the upload area and select two or more PDF files (or drag and drop them),',
+  'Arrange the files in the order you want them combined,',
+  'Click "Merge PDF" and download your combined document within seconds.',
+];
+const description = 'Merge multiple PDF files into a single document with our free online PDF merger. Combine invoices, reports, scanned pages, or contracts into one neatly ordered file that is easy to email, print, or archive. The entire process runs locally in your browser, so your documents are never uploaded to any server — meaning even the most sensitive paperwork stays private. Unlike many online PDF mergers that limit you to a couple of files or stamp watermarks on your pages, this tool places no limits and leaves no marks. Simply choose the files you want, arrange them in your preferred order, and download the merged result instantly. There is no software to install, no account to create, and no waiting on slow upload speeds, because nothing is sent over the internet. Whether you are combining client proposals, study notes, or legal documents, you can trust that the final PDF will keep the exact formatting, fonts, and quality of each source file. If you prefer to keep everything in one workflow, you can also use our other document tools like PDF Compression to shrink the finished file for easier sharing, or PDF to JPG to convert pages into images. Merge PDF is fast, private, and built to respect your data — exactly the way an online PDF tool should be.';
+---
+<ToolLayout slug="merge-pdf" icon="📄" title="Merge PDF"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/merge-pdf/">
+  <ToolUploader slot="uploader" uid="merge" accept="application/pdf,.pdf" multiple={true}
+    formats={['PDF']} actionLabel="Merge PDF" acceptLabel="Add two or more PDF files to combine them into one" />
+</ToolLayout>
+
+<script>
+  import setupMergePdf from '../../lib/client/pdf-merge.js';
+  setupMergePdf();
+</script>

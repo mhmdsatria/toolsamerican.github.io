@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Which formats can I convert between?', a: 'You can convert between JPG, PNG, and WebP. Transparent PNGs convert to JPG/WebP with a white or chosen background fill.' },
+  { q: 'Are my images uploaded?', a: 'No. Conversion happens locally with your browser canvas. Your images never leave your device.' },
+  { q: 'Will my image lose quality?', a: 'Each conversion uses the highest available quality for the target format. JPG→PNG is lossless, while PNG→JPG applies standard quality encoding.' },
+  { q: 'Can I convert multiple images at once?', a: 'Yes. Upload several images and each one is converted and delivered as a downloadable file.' },
+  { q: 'What should I do if the background changes?', a: 'By default we fill transparency with white for formats that cannot store alpha. Use a solid background before converting for pixel-perfect results.' },
+];
+const howToSteps = [
+  'Upload one or more images in any supported format,',
+  'Choose the target format (JPG, PNG, WebP) and optional quality,',
+  'Convert and download your new files instantly.',
+];
+const description = 'Convert images between JPG, PNG, and WebP formats for free — entirely in your browser. This tool takes any image you upload and re-encodes it into the format you need, with full control over quality and background handling for transparency. It is ideal for preparing images for websites that require specific formats, converting screenshots to lossless PNGs, or switching to lightweight WebP for faster page loads. Because all conversion happens locally on your device, your pictures and designs are never uploaded to a server — a crucial guarantee when working with client assets or personal photos. Convert images one at a time or in batches, and download each result with a single click. The tool preserves resolution and color, and silently handles edge cases like transparency when converting to JPG. When combined with Compress Image or Image Resizer, you can build a complete local image pipeline without ever touching a heavy desktop app. Image Converter is fast, private, and free — the straightforward way to switch image formats on the fly.';
+---
+<ToolLayout slug="image-converter" icon="🔁" title="Image Converter"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/image-converter/">
+  <ToolUploader slot="uploader" uid="imgconv" accept="image/jpeg,image/png,image/webp,image/avif"
+    formats={['JPG', 'PNG', 'WebP']} actionLabel="Convert" acceptLabel="Choose images to convert" />
+</ToolLayout>
+
+<script>
+  import setupImageConverter from '../../lib/client/image-converter.js';
+  setupImageConverter();
+</script>

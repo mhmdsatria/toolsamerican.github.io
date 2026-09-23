@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { siteName } from '../config/site.config.json';
+const copyright = new Date().getFullYear();
+---
+<BaseLayout title="Terms of Service" description={`Terms of Service for ${siteName} — the rules for using our free in-browser tools.`} canonicalPath="/terms-of-service/">
+  <main>
+    <div class="mx-auto max-w-6xl px-4 pt-6">
+      <Breadcrumb items={[{ label: 'Terms of Service' }]} />
+    </div>
+    <section class="mx-auto max-w-3xl px-4 py-8">
+      <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Terms of Service</h1>
+      <p class="mt-2 text-sm text-slate-500">Effective date: {`${copyright}-01-01`}</p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">1. Acceptance of terms</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        By accessing or using {siteName} ("the Service"), you agree to these Terms of Service. If you do not agree,
+        please do not use the Service. We may update these terms at any time; the latest version will always be available on this page.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">2. Description of service</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        The Service provides free, in-browser tools for converting, compressing, and editing documents, images, audio,
+        and video. All processing is performed locally in your browser using client-side technology. The Service does not
+        receive, store, or transmit the files you process.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">3. Acceptable use</h2>
+      <p class="mt-2 leading-7 text-slate-700">You agree not to:</p>
+      <ul class="mt-2 list-disc space-y-2 pl-6 leading-7 text-slate-700">
+        <li>Use the Service for any unlawful purpose or to violate any applicable law.</li>
+        <li>Use the Service to process material you do not have the right to use.</li>
+        <li>Attempt to disrupt, overload, or gain unauthorized access to the Service or related systems.</li>
+        <li>Use automated means to scrape or overload the Service.</li>
+      </ul>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">4. No warranty</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        The Service is provided "as is" and "as available" without warranties of any kind, express or implied,
+        including but not limited to warranties of accuracy, results, reliability, or fitness for a particular purpose.
+        We do not warrant that the Service will be uninterrupted or error-free, or that output files will meet your requirements.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">5. Limitation of liability</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        To the maximum extent permitted by law, {siteName} and its operators shall not be liable for any indirect,
+        incidental, special, consequential, or punitive damages, or any loss of data or profits, arising out of or related
+        to your use of the Service — even if advised of the possibility of such damages. Because files are processed
+        locally, any loss or corruption of your files is your responsibility; always keep backups.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">6. Intellectual property</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        The Service's design, brand, and code are the property of {siteName}. You may not copy, modify, or redistribute the
+        Service without permission. Files you process remain your property; we never claim any rights to your content.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">7. Advertising</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        The Service displays advertisements to cover operating costs. Advertisements are provided by third parties and do not
+        affect the local processing of your files.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">8. Changes and termination</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        We may modify, suspend, or discontinue any part of the Service at any time without notice. We may also change these
+        Terms; continued use after changes constitutes acceptance.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">9. Governing law</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        These Terms are governed by the laws applicable in the jurisdiction where the Service operator is located,
+        without regard to conflict-of-law principles.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold text-slate-900">10. Contact</h2>
+      <p class="mt-2 leading-7 text-slate-700">
+        For questions about these Terms, please visit our <a href="/contact/" class="text-brand-600 underline decoration-brand-200 underline-offset-2 hover:text-brand-700">contact page</a>.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

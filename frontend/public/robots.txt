@@ -1,0 +1,5 @@
+# robots.txt for toolsamerican.github.io
+User-agent: *
+Allow: /
+
+Sitemap: https://toolsamerican.github.io/sitemap-index.xml

@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Is the PDF converted to JPG on my device?', a: 'Yes. Every page is rendered locally in your browser and exported as a JPG. No uploads happen, so document privacy is fully preserved.' },
+  { q: 'What resolution do the JPG images have?', a: 'Pages are rendered at 2x zoom, which typically produces sharp 150–300 DPI images suitable for sharing, thumbnails, and printed previews.' },
+  { q: 'Will you convert every page?', a: 'Yes, each page in the PDF is exported as its own JPG, and every image is downloaded together so you can review or use them all.' },
+  { q: 'Are CMYK or special colors preserved?', a: 'Rendering converts pages to sRGB JPG. This matches how PDFs look on screens and prints well for most purposes.' },
+  { q: 'Can I choose specific pages?', a: 'Currently the tool exports the full document. To convert only a section, trim your PDF first with the Merge PDF tool, then convert the shortened file.' },
+];
+const howToSteps = [
+  'Upload a PDF file (any number of pages),',
+  'Watch each page render into a high-quality JPG image locally in your browser,',
+  'Download the individual page images as ready-to-use JPG files.',
+];
+const description = 'Convert PDF pages into high-quality JPG images with one click — completely free and private. This tool renders every page of your PDF as a crisp JPEG image at 2x zoom, giving you sharp, shareable images that look like the original document. It is ideal for turning a document into social media visuals, presentation slides, or simple images to embed into emails and websites. Because the conversion runs entirely in your browser, your files are never uploaded to a server, so confidential contracts and personal records never leave your computer. Each page is exported separately and downloaded together, making it easy to pick the exact page image you need or to flip through the whole document quickly. The default JPEG quality is tuned to keep text and graphics legible while maintaining a reasonable file size. If you work with PDFs often, pair this tool with PDF to Text to reuse the document copy, or use Compress PDF first if the source file is heavy and slows rendering. PDF to JPG is straightforward, blazing-fast, and built around your privacy — the reliable way to turn any PDF into images without installing a thing.';
+---
+<ToolLayout slug="pdf-to-jpg" icon="🖼️" title="PDF to JPG"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/pdf-to-jpg/">
+  <ToolUploader slot="uploader" uid="pdftojpg" accept="application/pdf,.pdf"
+    formats={['PDF']} actionLabel="Convert to JPG" acceptLabel="Choose a PDF file to convert to images" />
+</ToolLayout>
+
+<script>
+  import setupPdfToJpg from '../../lib/client/pdf-to-jpg.js';
+  setupPdfToJpg();
+</script>

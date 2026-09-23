@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Can I set exact pixel dimensions?', a: 'Yes. Enter your target width and height in pixels. The tool scales preserving aspect ratio using the options you set.' },
+  { q: 'Will resizing reduce image quality?', a: 'Downscaling keeps visual quality and sharpens the result. Upscaling can soften details, so we cap it at reasonable limits.' },
+  { q: 'Is my image uploaded to a server?', a: 'No. Resizing happens locally on your device. Your photos never leave your computer.' },
+  { q: 'Can I resize multiple images at once?', a: 'Yes. Select several images and each one is resized consistently to the same dimensions.' },
+  { q: 'Which output format do I get?', a: 'Images keep their format when resized (JPG stays JPG, PNG stays PNG). Transparency in PNGs is preserved.' },
+];
+const howToSteps = [
+  'Upload the image(s) you want to resize,',
+  'Enter your target width, height, or scale percentage,',
+  'Resize and download your optimized image instantly.',
+];
+const description = 'Resize images online for free — precisely and privately. This tool lets you scale any JPG, PNG, or WebP image up or down to exact pixel dimensions, perfect for social media cover photos, website thumbnails, email signatures, and app icon requirements. The resizer uses high-quality sampling in your browser, so downscaled images stay sharp and detailed without pixelation. Everything happens locally on your device — no uploads, no servers, no risk to personal or copyrighted images. Preserve the original aspect ratio with a single click, lock custom width and height, or scale by percentage; the preview updates instantly so you always know what you will get. You can process multiple files in one go, and every output keeps its format and transparency. Whether you are preparing a portfolio, optimizing store images for faster load time, or cropping down a holiday snap, exact dimensions are a few clicks away. Combine with Compress Image for smaller files or Image Converter to switch formats. Image Resizer is rapid, free, and fully private — the dependable way to get images to the size you need.';
+---
+<ToolLayout slug="image-resizer" icon="📐" title="Image Resizer"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/image-resizer/">
+  <ToolUploader slot="uploader" uid="imgresize" accept="image/jpeg,image/png,image/webp" multiple={true}
+    formats={['JPG', 'PNG', 'WebP']} actionLabel="Resize" acceptLabel="Add images to resize" />
+</ToolLayout>
+
+<script>
+  import setupImageResizer from '../../lib/client/image-resizer.js';
+  setupImageResizer();
+</script>

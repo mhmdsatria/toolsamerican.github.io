@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Will compressing a PDF reduce image quality?', a: 'This tool removes metadata, duplicate fonts, and unused objects from the PDF structure. Images and vectors are preserved at their original resolution, so formatting and sharpness are retained.' },
+  { q: 'Is the compression done on my computer?', a: 'Yes. The PDF is processed entirely in your browser, so your file never leaves your device — ideal if you are sharing confidential or legally sensitive documents.' },
+  { q: 'What file size can I compress?', a: 'You can upload files up to 100 MB. If your PDF is too large, try compressing your images first or splitting the document before uploading.' },
+  { q: 'Why is my PDF not shrinking much?', a: 'If your PDF is already optimized, or contains mostly text and vector graphics, savings will be smaller than for image-heavy documents. You can always export a graphically flat version for more aggressive size reduction.' },
+  { q: 'Do you keep a copy of my files?', a: 'No copy is ever made or stored. Because processing happens locally, nothing is transmitted, logged, or cached on our servers.' },
+];
+const howToSteps = [
+  'Upload a single PDF file (compression works best on large, image-heavy documents),',
+  'Wait a few seconds while your PDF is cleaned and optimized in your browser,',
+  'Click "Compress PDF" and download your smaller, ready-to-share file.',
+];
+const description = 'Compress PDF files online without losing quality. Large PDFs are a nightmare for email attachment limits, file managers, and instant messaging apps. This tool scans your PDF structure, strips away hidden metadata, removes duplicate or embedded fonts, and drops unused objects — the most common sources of bloat — then reassembles the document into a much lighter file. Because the optimization works on the internal structure rather than re-rendering every page, text stays crisp, vector graphics remain sharp, and images keep their original resolution. The whole process runs locally inside your browser using WebAssembly, so your document is never uploaded, monitored, or stored anywhere. There is simply no faster or safer way to lighten a PDF: no desktop software, no registration, and no waiting time. Whether you are preparing submissions, archiving records, or just trying to fit one more attachment into an email, a lighter PDF makes life easier. After compressing, you can batch-process related pages with our Merge PDF tool or extract text with PDF to Text to fully reuse your document. Compress PDF is private by design, free to use, and gets the job done in a single click.';
+---
+<ToolLayout slug="compress-pdf" icon="🗜️" title="Compress PDF"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/compress-pdf/">
+  <ToolUploader slot="uploader" uid="compress" accept="application/pdf,.pdf"
+    formats={['PDF']} actionLabel="Compress PDF" acceptLabel="Choose a PDF file up to 100 MB" />
+</ToolLayout>
+
+<script>
+  import setupCompressPdf from '../../lib/client/pdf-compress.js';
+  setupCompressPdf();
+</script>

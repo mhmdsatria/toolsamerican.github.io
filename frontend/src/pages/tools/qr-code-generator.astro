@@ -1,0 +1,46 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getTool } from '../../lib/tools';
+const tool = getTool('qr-code-generator');
+const faqs = [
+  { q: 'Is it free to generate unlimited QR codes?', a: 'Yes, completely free with no sign-up, no watermarks, and no expiry. Generate as many QR codes as you like.' },
+  { q: 'Are my QR code payloads uploaded?', a: 'No. The QR code is generated locally in your browser. Your text, URL, or Wi-Fi data never leaves your device.' },
+  { q: 'Can I scan the code on any phone?', a: 'Yes. The output PNG follows standard QR encoding, readable by the camera apps on iOS, Android, and desktop scanners.' },
+  { q: 'What can I encode?', a: 'URLs, plain text, phone numbers, emails, Wi-Fi credentials, contact details, and any other short text payload.' },
+  { q: 'What error-correction level do you use?', a: 'We use level M as a best balance between density and scannability, so codes tolerate minor damage or partial obstruction.' },
+];
+const howToSteps = [
+  'Type or paste the text, URL, or Wi-Fi data you want to encode,',
+  'The QR code is generated instantly in your browser,',
+  'Download the PNG and print or share it anywhere.',
+];
+const description = 'Create QR codes online for free — instantly and privately. This tool turns any URL, text, phone number, Wi-Fi network, or email address into a clean, scannable QR code that you can download as a high-resolution PNG. Perfect for restaurant menus, business cards, event posters, product packaging, and classroom materials. The code is generated locally in your browser, so the data you encode is never sent to any server — a genuine privacy win when you are encoding personal contact details or internal links. Output uses standard error-correction encoding that scans reliably in the camera apps on modern phones, and downloads crisp enough to print at any size. Speed matters: paste, generate, download — done in seconds, no account required and no watermark on your code. If you manage menus or signage, pair this tool with Image Converter to tweak the format or Image Resizer to get an exact print size. QR Code Generator is free, fast, and private — the simplest way to bridge the physical and digital worlds.';
+---
+<ToolLayout slug="qr-code-generator" icon="🔳" title="QR Code Generator"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/qr-code-generator/">
+  <div slot="uploader" class="not-prose mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div class="p-6">
+      <label for="qrcode-text" class="mb-2 block text-sm font-semibold text-slate-700">
+        Text or URL to encode
+      </label>
+      <textarea id="qrcode-text" rows="3" placeholder="https://toolsamerican.github.io" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"></textarea>
+      <div class="mt-4 flex items-center gap-3">
+        <button id="qrcode-generate" type="button" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700">
+          Generate QR Code
+        </button>
+        <span id="qrcode-status" class="text-sm text-slate-500" role="status"></span>
+      </div>
+      <div id="qrcode-result" class="mt-4"></div>
+      <p class="mt-4 text-xs text-slate-400">Generated locally — your text never leaves this page.</p>
+    </div>
+  </div>
+</ToolLayout>
+
+<script>
+  import setupQrGenerator from '../../lib/client/qr-generator.js';
+  setupQrGenerator();
+</script>

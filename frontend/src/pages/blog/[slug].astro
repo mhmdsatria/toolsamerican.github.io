@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getToolsByCategory } from '../../lib/tools';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const relatedTools = { document: ['document'], image: ['image'], 'audio-video': ['audio-video'], link: ['link'] };
+const categoryTools = relatedTools[post.data.category.toLowerCase()] ?? null;
+---
+<BlogLayout post={post} title={post.data.title} description={post.data.description} canonicalPath={`/blog/${post.id}/`}>
+  <article>
+    <div class="prose">
+      <Content />
+    </div>
+    {categoryTools && (
+      <div class="mt-12 not-prose border-t border-slate-200 pt-8">
+        <ToolCard title={`Related ${post.data.category.toLowerCase()} tools`} tools={getToolsByCategory(categoryTools)} limit={3} />
+      </div>
+    )}
+  </article>
+</BlogLayout>

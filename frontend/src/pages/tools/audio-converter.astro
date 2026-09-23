@@ -1,0 +1,31 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Can I convert between MP3, WAV, OGG, and M4A?', a: 'Yes. This tool encodes your audio into MP3, WAV, OGG, and M4A using high-quality encoders built into the browser engine.' },
+  { q: 'Is the conversion done locally?', a: 'Yes, entirely in your browser using WebAssembly. Your audio never leaves your device.' },
+  { q: 'Why might large audio files take longer?', a: 'Large or long files require more computation in the browser. We recommend a file up to 50 MB for the smoothest experience.' },
+  { q: 'Will the audio quality be preserved?', a: 'We encode at a high bit rate by default, which preserves sound quality for music, podcasts, and voice recordings.' },
+  { q: 'Can I convert multiple files at once?', a: 'The tool processes one file at a time to keep memory stable. Run it again for additional files.' },
+];
+const howToSteps = [
+  'Upload the audio file you want to convert (MP3, WAV, OGG, M4A, FLAC),',
+  'Wait while the audio is decoded and re-encoded to your chosen format locally,',
+  'Download your converted audio file instantly.',
+];
+const description = 'Convert audio files between formats for free — fast and private. This tool decodes your audio and re-encodes it as MP3, WAV, OGG, or M4A, using high-quality encoders that run entirely in your browser via WebAssembly. It is ideal for downsizing large WAV recordings to space-saving MP3, preparing ringtones, matching upload requirements, or archiving interviews. Because the processing happens locally on your device, sensitive recordings never travel to a server — the safest way to convert audio you do not want shared. No registration, no hidden limits, and no watermark. Upload a file up to 50 MB, wait while the conversion runs (a few seconds for most files), and download the result. Long clips take proportionally more time, but you always get a clean, complete output. Use it to convert a podcast episode to MP3 for your app, make a loop-friendly OGG for games, or shrink studio exports to shareable WAVs. Pair it with MP4 to MP3 for video audio extraction and QR Code Generator to drop a playable link anywhere. Audio Converter is straightforward, free, and private.';
+---
+<ToolLayout slug="audio-converter" icon="🎧" title="Audio Converter"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/audio-converter/">
+  <ToolUploader slot="uploader" uid="audioconv" accept="audio/mpeg,audio/wav,audio/ogg,audio/mp4,audio/x-flac,.mp3,.wav,.ogg,.m4a,.flac"
+    formats={['MP3', 'WAV', 'OGG', 'M4A']} actionLabel="Convert to MP3" acceptLabel="Choose an audio file (up to 50 MB)" maxSizeMB={50}
+    tip="Outputs MP3 by default. More output formats will be added soon." />
+</ToolLayout>
+
+<script>
+  import setupAudioConverter from '../../lib/client/audio-converter.js';
+  setupAudioConverter();
+</script>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolCard from '../components/ToolCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { getToolsByCategory, CATEGORIES, TOOLS } from '../lib/tools';
+import { siteName, defaultMetaDescription } from '../config/site.config.json';
+const totalTools = TOOLS.length;
+---
+<BaseLayout title={`${siteName} — Free Online Tools`}
+  description="Free online tools to merge, compress, convert, and edit PDF, DOCX, images, audio, and more. Everything runs locally in your browser — nothing is ever uploaded."
+  ogType="website">
+  <main>
+    <section class="bg-gradient-to-b from-brand-50 to-white">
+      <div class="mx-auto max-w-6xl px-4 py-16 text-center">
+        <span class="text-6xl" aria-hidden="true">🛠️</span>
+        <h1 class="mx-auto mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          Free online tools that respect your privacy
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          Merge, compress, convert, and edit PDFs, Word documents, images, audio, and more.
+          Every tool runs directly in your browser — your files never leave your device.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {CATEGORIES.map((c) => (
+            <a href={`/tools/#${c.id}`} class="rounded-full bg-white px-4 py-2 text-sm font-medium text-brand-700 ring-1 ring-slate-200 hover:bg-brand-50">{c.label}</a>
+          ))}
+        </div>
+        <p class="mt-6 text-sm font-semibold text-brand-600">{totalTools} free tools · no sign-up · no uploads</p>
+      </div>
+    </section>
+
+    <AdSlot label="Advertisement" />
+
+    <section class="mx-auto max-w-6xl px-4 py-10">
+      {CATEGORIES.map((c) => (
+        <div id={c.id} class="scroll-mt-24">
+          <ToolCard title={`${c.label} tools`} tools={getToolsByCategory([c.id])} />
+        </div>
+      ))}
+    </section>
+
+    <AdSlot label="Advertisement" />
+
+    <section class="mx-auto max-w-6xl px-4 py-10">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 p-6">
+          <span class="text-3xl" aria-hidden="true">🔒</span>
+          <h2 class="mt-3 text-lg font-bold text-slate-900">Private by design</h2>
+          <p class="mt-2 text-sm text-slate-600">Files are processed in your browser. Nothing is uploaded, stored, or shared.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6">
+          <span class="text-3xl" aria-hidden="true">⚡</span>
+          <h2 class="mt-3 text-lg font-bold text-slate-900">Fast and free</h2>
+          <p class="mt-2 text-sm text-slate-600">No queues, no watermarks, no sign-up. Results are ready in seconds.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6">
+          <span class="text-3xl" aria-hidden="true">🌐</span>
+          <h2 class="mt-3 text-lg font-bold text-slate-900">Works everywhere</h2>
+          <p class="mt-2 text-sm text-slate-600">Runs right in your browser on any modern desktop or mobile device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 py-8 pb-16">
+      <div class="rounded-2xl bg-brand-700 p-8 text-white">
+        <h2 class="text-2xl font-bold">Need a quick tool? We’ve got you covered.</h2>
+        <p class="mt-2 text-brand-100">From PDF merging to QR codes, explore the full library of {totalTools} free, private tools.</p>
+        <a href="/tools/" class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50">Browse all tools →</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

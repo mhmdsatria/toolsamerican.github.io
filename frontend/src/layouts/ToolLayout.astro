@@ -1,0 +1,68 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import AdSlot from '../components/AdSlot.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { getRelatedTools } from '../lib/tools';
+
+interface Faq { q: string; a: string; }
+interface Props {
+  slug: string;
+  icon: string;
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  faqs: Faq[];
+  howToSteps: string[];
+}
+const { slug, icon, title, description, canonicalPath, faqs, howToSteps } = Astro.props;
+const related = getRelatedTools(slug, 3);
+---
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <div class="mx-auto max-w-6xl px-4 pt-6">
+    <Breadcrumb items={[{ label: 'Tools', href: '/tools/' }, { label: title }]} />
+  </div>
+
+  <main class="mx-auto max-w-6xl px-4 pt-2">
+    <header class="max-w-3xl">
+      <span class="text-5xl" aria-hidden="true">{icon}</span>
+      <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{title}</h1>
+      <p class="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+    </header>
+
+    <AdSlot />
+
+    <section aria-label={`${title} tool`}>
+      <slot name="uploader" />
+    </section>
+
+    <AdSlot />
+
+    <section class="mt-12 not-prose" aria-labelledby="howto-title">
+      <h2 id="howto-title" class="mb-5 text-2xl font-bold text-slate-900">How to use</h2>
+      <ol class="space-y-4">
+        {howToSteps.map((step, i) => (
+          <li class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">
+              {i + 1}
+            </span>
+            <div class="text-slate-700">
+              <p class="text-sm leading-6">{step}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <AdSlot />
+
+    <slot name="content" />
+
+    <FAQAccordion items={faqs} />
+
+    <div class="mt-14 border-t border-slate-200 pt-10">
+      <ToolCard title="Related tools" tools={related} limit={3} />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Is the audio extracted from my video locally?', a: 'Yes. The video is decoded and the audio track is encoded to MP3 entirely in your browser using WebAssembly. Nothing is uploaded.' },
+  { q: 'Why might conversion be slower than desktop software?', a: 'Because processing happens in your browser (no server), conversion speed depends on your device. Long or high-resolution videos take more time but always work.' },
+  { q: 'Which video formats are supported?', a: 'MP4, along with most daily-use containers such as M4V, MOV, AVI, MKV, and WebM, as long as your browser can decode them.' },
+  { q: 'What quality will the MP3 have?', a: 'We use the MP3 encoder at a high quality setting (around 190 kbps average), excellent for music and podcasts.' },
+  { q: 'Can I convert multiple videos at once?', a: 'The tool processes one video at a time for stable memory usage. Simply run it again for the next file.' },
+];
+const howToSteps = [
+  'Upload the video (e.g., MP4) you want to extract audio from,',
+  'Wait while the audio track is extracted and encoded to MP3 in your browser,',
+  'Download your MP3 and enjoy it anywhere.',
+];
+const description = 'Extract MP3 audio from MP4 video, completely free and private. This tool separates the audio track from your video and encodes it as a high-quality MP3, ready for phones, playlists, and podcast apps. Perfect for turning YouTube-style downloads, recordings, or interviews into music you can listen to offline without the video. The extraction runs entirely in your browser via WebAssembly — your file never leaves your device, making it safe for lectures, meetings, and unpublished audio. No account, no watermark, no server queues: upload, wait a few seconds (longer videos take longer), and download. Because the tool runs locally, conversion speed depends on your machine, but you get reliable, loss-free audio in return. Use it to grab the audio from a presentation, convert a music video to a track, or archive the audio of an old recording. Pair it with Audio Converter when you need the result in WAV or OGG, or with QR Code Generator to link your music and share it instantly. MP4 to MP3 is the fastest, most private way to turn video sound into standalone audio.';
+---
+<ToolLayout slug="mp4-to-mp3" icon="🎵" title="MP4 to MP3"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/mp4-to-mp3/">
+  <ToolUploader slot="uploader" uid="mp42mp3" accept="video/mp4,video/quicktime,video/x-msvideo,video/x-matroska,video/webm,.mp4,.m4v,.mov,.avi,.mkv,.webm"
+    formats={['MP4', 'MOV', 'MKV', 'WebM']} actionLabel="Extract MP3" acceptLabel="Choose a video file (up to 50 MB)" maxSizeMB={50}
+    tip="Processing happens in your browser — larger or longer videos take more time." />
+</ToolLayout>
+
+<script>
+  import setupMp4ToMp3 from '../../lib/client/mp4-to-mp3.js';
+  setupMp4ToMp3();
+</script>

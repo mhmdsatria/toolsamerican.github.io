@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolUploader from '../../components/ToolUploader.astro';
+const faqs = [
+  { q: 'Can I convert DOCX files larger than 10 MB?', a: 'The tool handles files up to 20 MB comfortably. For larger documents, simplify heavy embedded media first for the smoothest result.' },
+  { q: 'Are my Word documents uploaded?', a: 'No. The conversion runs in your browser using a lightweight Word parsing engine. Your file never leaves your device.' },
+  { q: 'Does the HTML preserve images and styles?', a: 'Yes. Standard formatting like headings, lists, links, images, and basic styles are mapped to clean HTML tags you can reuse directly.' },
+  { q: 'Why might some advanced features not appear?', a: 'Very complex layouts (e.g., precise positioning, mail-merge fields, comments) are simplified to plain HTML. Most everyday documents convert perfectly.' },
+  { q: 'Can I convert DOC (legacy) files?', a: 'Legacy binary .doc files have limited support in modern browsers. We recommend saving the file as .docx first for best results.' },
+];
+const howToSteps = [
+  'Upload your Word (.docx) document,',
+  'The converter maps headings, paragraphs, lists, and media into clean HTML,',
+  'Download the HTML file and open it in any browser or paste it into an editor.',
+];
+const description = 'Convert Word documents to clean HTML for free — instantly and privately. This tool reads your .docx file and turns headings, paragraphs, lists, images, links, and basic formatting into semantic HTML that you can open in any browser, embed in a website, or paste into a content management system. Because the conversion happens right in your browser, your document is never uploaded anywhere — perfect for drafts, contracts, and unpublished content. The output is intentionally clean and lightweight: no inline junk, no giant style blocks — just readable markup that works. It is ideal for turning proposal boilerplate into web-ready copy, migrating old Word notes into a blog, or sharing document content in a format anyone can view. If you need the exact visual layout of an unusual template, some intricate positioning may simplify, but everyday documents — reports, letters, manuals — arrive intact and legible. Pair the output with our PDF tools: convert the result into a styled PDF with the browser print dialog, tighten heavy source files first with Compress PDF, or extract editable copy with PDF to Text. DOCX to HTML is fast, free, and as private as running a converter on your own desktop.';
+---
+<ToolLayout slug="docx-to-html" icon="🧾" title="DOCX to HTML"
+  description={description}
+  howToSteps={howToSteps}
+  faqs={faqs}
+  canonicalPath="/tools/docx-to-html/">
+  <ToolUploader slot="uploader" uid="docx2html" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    formats={['DOCX']} actionLabel="Convert to HTML" acceptLabel="Choose a Word (.docx) document" maxSizeMB={20} />
+</ToolLayout>
+
+<script>
+  import setupDocxToHtml from '../../lib/client/docx-to-html.js';
+  setupDocxToHtml();
+</script>

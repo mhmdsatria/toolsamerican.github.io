@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { siteName } from '../config/site.config.json';
+import { TOOLS } from '../lib/tools';
+
+const principles = [
+  {
+    icon: '🔒',
+    title: 'Nothing is uploaded',
+    text: 'Every tool uses WebAssembly and browser APIs to process your files directly on your device. When you merge a PDF or compress an image, the file never travels over the network. This makes the tools safe for contracts, photos, and other sensitive material.',
+  },
+  {
+    icon: '⚡',
+    title: 'Fast by design',
+    text: 'Because there is no server round-trip, results appear as quickly as your device allows. No queues, no waiting for uploads, no "processing" spinner that lasts minutes.',
+  },
+  {
+    icon: '🧼',
+    title: 'Free, no watermarks',
+    text: 'All tools are free to use without an account, without watermarks, and without artificial file limits. We keep the lights on with advertisements shown on some pages — and even those never touch your data.',
+  },
+  {
+    icon: '🌱',
+    title: 'Small and simple',
+    text: 'We deliberately keep the site lightweight so pages load fast on slow connections and modest hardware. No heavy frameworks, no tracking clutter beyond what is strictly needed.',
+  },
+];
+const toolsCount = TOOLS.length;
+---
+<BaseLayout title="About" description={`About ${siteName} — free, private, in-browser tools for PDF, DOCX, images, audio, and video. Learn who we are and why we build this.`} canonicalPath="/about/">
+  <main>
+    <div class="mx-auto max-w-6xl px-4 pt-6">
+      <Breadcrumb items={[{ label: 'About' }]} />
+    </div>
+    <section class="mx-auto max-w-3xl px-4 py-8">
+      <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">About {siteName}</h1>
+      <p class="mt-4 text-lg leading-7 text-slate-600">
+        {siteName} is a collection of simple, free, and genuinely private online tools.
+        We began with a simple frustration: most "free" converters are anything but free — they upload your files to a server,
+        stamp watermarks on your results, cap your file count, or silently sell your data.
+        We built {siteName} the way tools should be built: everything runs locally in your browser, and your files never leave your device.
+      </p>
+      <p class="mt-4 text-lg leading-7 text-slate-600">
+        Today you will find {toolsCount} tools across document, image, audio-video, and link categories —
+        from merging PDFs and compressing images to extracting MP3 from video and generating QR codes.
+        Each tool is a standalone page with clear instructions and a simple interface, and the entire library is free with no sign-up.
+      </p>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 py-6">
+      <h2 class="max-w-3xl text-2xl font-bold text-slate-900">Our principles</h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {principles.map((p) => (
+          <div class="rounded-2xl border border-slate-200 p-6">
+            <span class="text-3xl" aria-hidden="true">{p.icon}</span>
+            <h3 class="mt-3 text-lg font-bold text-slate-900">{p.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-4 py-8">
+      <h2 class="text-2xl font-bold text-slate-900">How we stay online</h2>
+      <p class="mt-3 leading-7 text-slate-600">
+        Building and hosting a site costs money. To keep every tool free, some pages show discreet advertisements.
+        These ads never see your files, and you can read exactly how they work in our
+        <a href="/privacy-policy/" class="text-brand-600 underline decoration-brand-200 underline-offset-2 hover:text-brand-700"> privacy policy</a>.
+      </p>
+      <p class="mt-4 leading-7 text-slate-600">
+        Have a suggestion, a bug report, or an idea for a new tool? We would love to hear it —
+        reach out on our <a href="/contact/" class="text-brand-600 underline decoration-brand-200 underline-offset-2 hover:text-brand-700">contact page</a>.
+      </p>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 pb-16">
+      <ToolCard title="Explore the tools" />
+    </section>
+  </main>
+</BaseLayout>
