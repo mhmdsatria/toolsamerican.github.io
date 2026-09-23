@@ -1,0 +1,3 @@
+import{n as e,t}from"./uploader.6NtLC4l-.js";import{n,t as r}from"./pdf.FeiLh37i.js";r.workerSrc=new URL(`/pdfjs/pdf.worker.min.mjs`,window.location.origin).href;function i(){return new t({uid:`pdftotext`,minFiles:1,maxFiles:1,process:async([t],{status:r,progress:i})=>{r(`Loading PDF…`),i(10);let a=await n({url:URL.createObjectURL(t)}).promise;i(30);let o=[];for(let e=1;e<=a.numPages;e++){let t=(await(await a.getPage(e)).getTextContent()).items.map(e=>e.str??``).join(` `);o.push(`${t}`),i(30+Math.round(e/a.numPages*60)),(e-1)%2==0&&await new Promise(e=>setTimeout(e,0))}let s=o.join(`
+
+`),c=new Blob([s],{type:`text/plain;charset=utf-8`});return e(c,`${t.name.replace(/\.pdf$/i,``)}.txt`)}})}i();
