@@ -1,5 +1,5 @@
-# robots.txt for toolsamerican.github.io
+# robots.txt for bytecore.biz.id
 User-agent: *
 Allow: /
 
-Sitemap: https://mhmdsatria.github.io/toolsamerican.github.io/sitemap-index.xml
+Sitemap: https://bytecore.biz.id/sitemap-index.xml
