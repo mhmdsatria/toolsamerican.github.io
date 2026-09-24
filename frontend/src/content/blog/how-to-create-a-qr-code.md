@@ -4,7 +4,7 @@ description: "A plain-English guide to generating QR codes for URLs, Wi-Fi, and 
 pubDate: 2026-01-20
 updatedDate: 2026-02-25
 category: "Link"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 6
 tags: ["QR code", "marketing", "print", "privacy"]
 ---

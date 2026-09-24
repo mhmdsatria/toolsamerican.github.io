@@ -1,4 +1,4 @@
-# ads.txt — ToolsAmerican
+# ads.txt — Bytecore
 # HOW TO FILL IN AFTER GOOGLE ADSENSE APPROVAL
 # ----------------------------------------------
 # 1. Log in to AdSense → click "Accounts" (or the account menu) → "Payment info"
@@ -7,7 +7,7 @@
 #    The account ID looks like: pub-1234567890123456 (without "ca-").
 # 2. Copy the exact ad.txt content that AdSense shows you and paste it below.
 # 3. Commit & push to `main`. GitHub Pages will serve it at:
-#    https://toolsamerican.github.io/ads.txt
+#    https://bytecore.biz.id/ads.txt
 #
 # Example line (REPLACE with your real publisher ID before going live):
 # google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

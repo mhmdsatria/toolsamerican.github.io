@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://toolsamerican.github.io',
+  site: 'https://bytecore.biz.id',
   base: '/',
   output: 'static',
   compressHTML: true,

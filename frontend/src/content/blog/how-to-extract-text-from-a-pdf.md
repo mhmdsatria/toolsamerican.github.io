@@ -4,7 +4,7 @@ description: "Stop re-typing PDF content. Learn how text extraction works, when 
 pubDate: 2026-02-10
 updatedDate: 2026-03-01
 category: "Document"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 5
 tags: ["PDF", "text extraction", "OCR", "productivity"]
 ---

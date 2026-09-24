@@ -1,6 +1,6 @@
 # Backend
 
-ToolsAmerican is a **static site**. All tools run client-side in the browser using WebAssembly
+Bytecore is a **static site**. All tools run client-side in the browser using WebAssembly
 (`@ffmpeg/ffmpeg`, `pdf.js`, `pdf-lib`, etc.).
 
 There is no backend server and no API. Files are never uploaded or stored — they are processed

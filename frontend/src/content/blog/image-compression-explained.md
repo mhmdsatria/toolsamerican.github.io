@@ -4,7 +4,7 @@ description: "A practical, jargon-free guide to image compression — which form
 pubDate: 2026-03-20
 updatedDate: 2026-04-10
 category: "Image"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 6
 tags: ["images", "compression", "WebP", "optimization"]
 ---

@@ -4,7 +4,7 @@ description: "CSV is the universal lingua franca of data. Learn which Excel feat
 pubDate: 2026-02-18
 updatedDate: 2026-03-08
 category: "Document"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 5
 tags: ["Excel", "CSV", "data", "workflow"]
 ---

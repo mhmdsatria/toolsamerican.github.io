@@ -9,7 +9,7 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     category: z.string(),
-    author: z.string().default('ToolsAmerican'),
+    author: z.string().default('Bytecore'),
     draft: z.boolean().default(false),
     cover: z.string().optional(),
     readingTime: z.number().int().positive().default(5),

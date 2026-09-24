@@ -1,6 +1,6 @@
-# Tahap-Tahap Publish ToolsAmerican ke GitHub Pages
+# Tahap-Tahap Publish Bytecore ke GitHub Pages
 
-Situs akan di-host di: **https://toolsamerican.github.io**
+Situs di-host di: **https://bytecore.biz.id** (custom domain GitHub Pages)
 
 Semua perintah dijalankan di **PowerShell** di folder `C:\Users\Sardev\Desktop\Tools_ads`.
 > Tips: klik kanan folder `Tools_ads` di Windows Explorer → "Open in Terminal".
@@ -51,7 +51,7 @@ file `node_modules`, `dist`, `.astro` (sudah otomatis diabaikan via `.gitignore`
 Lakukan commit:
 
 ```powershell
-git commit -m "Initial commit: ToolsAmerican site"
+git commit -m "Initial commit: Bytecore site"
 ```
 
 ---
@@ -59,14 +59,10 @@ git commit -m "Initial commit: ToolsAmerican site"
 ## Tahap 4 — Buat repository di GitHub
 
 ```powershell
-gh repo create toolsamerican.github.io --public --source . --remote origin --push
+gh repo create <nama-repo> --public --source . --remote origin --push
 ```
 
-- Nama **harus persis** `toolsamerican.github.io` (tanpa akhiran lain).
 - `--push` otomatis mengirim commit main → memicu build di GitHub.
-
-**Jika nama itu sudah dipakai orang lain:** ubah akun Anda ke username lain di GitHub, atau
-ganti nama sesuai username akun Anda: `<username>.github.io`.
 
 ---
 
@@ -83,24 +79,25 @@ Artinya:
 
 ---
 
-## Tahap 6 — Aktifkan Pages (satu kali, kalau belum otomatis)
+## Tahap 6 — Aktifkan Pages + custom domain (satu kali)
 
-Setelah workflow selesai, buka di browser:
-`https://github.com/<username>/toolsamerican.github.io/settings/pages`
+Buka di browser: **Settings → Pages** di repo Anda.
 
-Pastikan **Source = "Deploy from a branch" → `main` → `/ (root)`**.
-Biasanya `deploy-pages@v4` sudah mengaktifkannya sendiri; langkah ini hanya cadangan.
+1. **Source = "Deploy from a branch" → `gh-pages` → `/ (root)`**.
+2. Isi **Custom domain** = `bytecore.biz.id` → **Save** (unit DNS otomatis dibuat).
+3. Pastikan DNS domain Anda mengarah ke GitHub Pages (A records:
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`).
 
 ---
 
 ## Tahap 7 — Cek situs live
 
-Buka di browser: **https://toolsamerican.github.io**
+Buka di browser: **https://bytecore.biz.id**
 
 Periksa:
 - Homepage tampil dengan styling
 - `/tools/` daftar 12 tools
-- `/robots.txt` → berisi `Sitemap: https://toolsamerican.github.io/sitemap-index.xml`
+- `/robots.txt` → berisi `Sitemap: https://bytecore.biz.id/sitemap-index.xml`
 - `/sitemap-index.xml` → pointer ke `sitemap-0.xml`
 
 ---

@@ -1,5 +1,5 @@
-# PRD — ToolsAmerican
-**Domain:** `toolsamerican.github.io`
+# PRD — Bytecore
+**Domain:** `bytecore.biz.id`
 **Tujuan akhir:** Situs multi-tools (dokumen, file, mp3, mp4, link, dll) yang layak diajukan ke Google AdSense 2026 dan lolos review.
 
 ---
@@ -32,7 +32,7 @@
 
 ## 1. Ringkasan Produk
 
-**Nama:** ToolsAmerican
+**Nama:** Bytecore
 **Positioning:** "All-in-one online tools" — convert, compress, edit file dokumen/gambar/audio/video/link, gratis, tanpa install, privasi terjaga (proses di browser).
 
 **Kategori tools (contoh, kembangkan sesuai kebutuhan):**
@@ -159,7 +159,7 @@ toolsamerican/
 ### Isi `site.config.json` (ini "CMS" mini-nya)
 ```json
 {
-  "siteName": "ToolsAmerican",
+  "siteName": "Bytecore",
   "siteUrl": "https://toolsamerican.github.io",
   "googleAnalyticsId": "G-XXXXXXX",
   "googleAdsensePublisherId": "ca-pub-XXXXXXXXXXXXXXX",
@@ -190,8 +190,8 @@ Tiap halaman tool (`ToolLayout.astro`) harus punya struktur konsisten:
 
 
 ```
-Kamu akan membangun situs "ToolsAmerican" — situs static multi-tools (dokumen, gambar,
-audio, video, link) yang akan di-deploy ke GitHub Pages di domain toolsamerican.github.io,
+Kamu akan membangun situs "Bytecore" — situs static multi-tools (dokumen, gambar,
+audio, video, link) yang akan di-deploy ke GitHub Pages di domain bytecore.biz.id,
 dan harus memenuhi syarat Google AdSense 2026.
 
 KONSTRAIN WAJIB:

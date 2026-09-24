@@ -1,8 +1,8 @@
-# ToolsAmerican
+# Bytecore
 
 Free online tools for documents, images, audio, video, and links — **everything runs locally in your browser. Your files are never uploaded.**
 
-Live at: [https://toolsamerican.github.io](https://toolsamerican.github.io)
+Live at: [https://bytecore.biz.id](https://bytecore.biz.id)
 
 ## Featured tools
 
@@ -15,10 +15,10 @@ Live at: [https://toolsamerican.github.io](https://toolsamerican.github.io)
 
 ## Tech stack
 
-- **Astro 7** — static site generator (all pages are pre-rendered HTML).
+- **Astro** — static site generator (all pages are pre-rendered HTML).
 - **Tailwind CSS 4** — utility-first styling via the Vite plugin (`@tailwindcss/vite`).
 - **100% client-side processing** — `pdf-lib`, `pdf.js`, `mammoth`, `SheetJS`, `browser-image-compression`, `@ffmpeg/ffmpeg` (WASM), and `qrcode`.
-- Deployed to **GitHub Pages** via GitHub Actions.
+- Deployed to **GitHub Pages** (custom domain `bytecore.biz.id`).
 
 ## Local development
 
@@ -41,7 +41,7 @@ Edit `frontend/src/config/site.config.json` before going live:
 | Key | Purpose |
 |---|---|
 | `siteName` | Site name used in titles, headers, and footer |
-| `siteUrl` | Canonical origin — keep `https://toolsamerican.github.io` |
+| `siteUrl` | Canonical origin — keep `https://bytecore.biz.id` |
 | `googleAnalyticsId` | Google Analytics 4 property ID (e.g. `G-XXXXXXXXXX`) |
 | `googleAdsensePublisherId` | AdSense publisher ID (e.g. `ca-pub-XXXXXXXXXXXXXX`) — empty = ads not injected |
 | `googleSiteVerification` | Google Search Console verification token |
@@ -51,12 +51,11 @@ All of these are optional except the site name and URL. Analytics/AdSense script
 
 ## Going live
 
-1. Create a GitHub repository named **`toolsamerican.github.io`** for this project.
-2. Push the `main` branch. The `.github/workflows/deploy.yml` workflow builds Astro and deploys `frontend/dist` to GitHub Pages.
-3. In the repo settings: **Settings → Pages → Source: GitHub Actions**.
-4. In Google Search Console, add the property and submit the sitemap:
-   `https://toolsamerican.github.io/sitemap-index.xml`
-5. After AdSense approval, fill in the Publisher ID, then update `frontend/public/ads.txt` with the exact content AdSense provides.
+1. Push to the `main` branch. The `.github/workflows/deploy.yml` workflow builds Astro and deploys `frontend/dist` to GitHub Pages.
+2. In the repo settings: **Settings → Pages → Custom domain: `bytecore.biz.id`** and ensure the DNS A records point to GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`).
+3. In Google Search Console, add the property and submit the sitemap:
+   `https://bytecore.biz.id/sitemap-index.xml`
+4. After AdSense approval, fill in the Publisher ID, then update `frontend/public/ads.txt` with the exact content AdSense provides.
 
 ## Project structure
 
@@ -78,4 +77,4 @@ All of these are optional except the site name and URL. Analytics/AdSense script
 
 ## License
 
-Site code © ToolsAmerican. Blog content © ToolsAmerican. Tools run entirely client-side; no rights are claimed over user-uploaded content.
+Site code © Bytecore. Blog content © Bytecore. Tools run entirely client-side; no rights are claimed over user-uploaded content.

@@ -106,7 +106,7 @@ for (let y = H - 90; y < H; y++) {
   }
 }
 
-drawText(pixels, 'TOOLSAMERICAN', W / 2, 250, 22, [255, 255, 255]);
+drawText(pixels, 'BYTECORE', W / 2, 250, 22, [255, 255, 255]);
 drawText(pixels, 'CONVERT  COMPRESS  EDIT  IN  YOUR  BROWSER', W / 2, 380, 12, [255, 255, 255]);
 drawText(pixels, 'PRIVATE   FAST   FREE  -  NO  UPLOADS', W / 2, 452, 10, [191, 219, 254]);
 

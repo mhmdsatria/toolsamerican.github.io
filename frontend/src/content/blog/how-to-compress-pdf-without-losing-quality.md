@@ -4,7 +4,7 @@ description: "Learn practical, reliable ways to shrink a PDF file — and why th
 pubDate: 2026-01-08
 updatedDate: 2026-02-12
 category: "Document"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 6
 tags: ["PDF", "file size", "compression", "privacy"]
 ---

@@ -4,7 +4,7 @@ description: "Rip the audio track out of an MP4 or MOV cleanly — locally, priv
 pubDate: 2026-03-05
 updatedDate: 2026-04-01
 category: "Audio & Video"
-author: "ToolsAmerican"
+author: "Bytecore"
 readingTime: 6
 tags: ["video", "audio", "MP3", "conversion"]
 ---
